@@ -1,11 +1,28 @@
-import React from "react";
+import Layout from "../components/Layout";
 
-function WalletPage() {
+export default function WalletPage() {
+
   return (
-    <div style={{padding:20}}>
-      <h1>Wallet Page</h1>
-    </div>
+
+    <Layout>
+
+      <h1>Digital Wallet</h1>
+
+      <div style={{
+        background: "white",
+        padding: "20px",
+        borderRadius: "10px",
+        width: "300px"
+      }}>
+
+        <h3>Balance</h3>
+        <h2>₹5,000</h2>
+
+        <button>Add Funds</button>
+
+      </div>
+
+    </Layout>
+
   );
 }
-
-export default WalletPage;
