@@ -1,12 +1,19 @@
-import React from "react";
+import Layout from "../components/Layout";
 
-function TransactionHistoryPage() {
+export default function TransactionHistoryPage() {
+
   return (
-    <div style={{ padding: 20 }}>
+
+    <Layout>
+
       <h1>Transaction History</h1>
-      <p>View all past transactions</p>
-    </div>
+
+      <ul>
+        <li>₹200 → Grocery Store</li>
+        <li>₹500 → Utility Bill</li>
+      </ul>
+
+    </Layout>
+
   );
 }
-
-export default TransactionHistoryPage;
