@@ -3,14 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "eslint": "eslint . --ext .ts,.tsx --fix --max-warnings 0",
-    "preview": "vite preview",
-    "prettier": "prettier . --write --ignore-unknown",
-    "start": "serve -s dist -l 3000"
-  },
+ "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "start": "serve -s dist -l 3000"
+},
   "dependencies": {
     "@ai-sdk/react": "3.0.79",
     "ai": "6.0.77",
