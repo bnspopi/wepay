@@ -17,9 +17,9 @@ import WelfarePage from './pages/WelfarePage';
 
 
 import { LanguageProvider } from './i18n/languageContext';
-import { LocationProvider } from './contexts/LocationContext';
+import { LocationProvider } from './context/LocationContext';
 import { useTranslation } from './hooks/useTranslation';
-import { useLocation } from './contexts/LocationContext';
+import { useLocation } from './context/LocationContext';
 
 function App() {
   const [user, setUser] = useState<any>(null);
