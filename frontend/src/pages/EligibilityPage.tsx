@@ -1,12 +1,22 @@
-import React from "react";
+import Layout from "../components/Layout";
 
-function EligibilityPage() {
+export default function EligibilityPage() {
+
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Eligibility Check</h1>
-      <p>Check if you qualify for welfare schemes</p>
-    </div>
+
+    <Layout>
+
+      <h1>Check Eligibility</h1>
+
+      <input placeholder="Aadhar Number" />
+      <br /><br />
+
+      <input placeholder="Age" />
+      <br /><br />
+
+      <button>Check Status</button>
+
+    </Layout>
+
   );
 }
-
-export default EligibilityPage;
