@@ -1,11 +1,36 @@
-import React from "react";
+import Layout from "../components/Layout";
 
-function HomePage() {
+export default function HomePage() {
+
   return (
-    <div style={{padding:20}}>
-      <h1>Home Page</h1>
-    </div>
+
+    <Layout>
+
+      <h1>Dashboard</h1>
+
+      <div style={{ display: "flex", gap: "20px" }}>
+
+        <div style={{
+          background: "white",
+          padding: "20px",
+          borderRadius: "10px"
+        }}>
+          <h3>Wallet Balance</h3>
+          <h2>₹5,000</h2>
+        </div>
+
+        <div style={{
+          background: "white",
+          padding: "20px",
+          borderRadius: "10px"
+        }}>
+          <h3>Active Schemes</h3>
+          <p>3</p>
+        </div>
+
+      </div>
+
+    </Layout>
+
   );
 }
-
-export default HomePage;
