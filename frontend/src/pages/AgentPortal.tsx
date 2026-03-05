@@ -1,12 +1,17 @@
-import React from "react";
+import Layout from "../components/Layout";
 
-function AgentPortal() {
+export default function AgentPortal() {
+
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Agent Portal</h1>
-      <p>Manage welfare agents and verification</p>
-    </div>
+
+    <Layout>
+
+      <h1>Agent Dashboard</h1>
+
+      <p>Total Users: 128</p>
+      <p>Verification Rate: 99%</p>
+
+    </Layout>
+
   );
 }
-
-export default AgentPortal;
