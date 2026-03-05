@@ -1,12 +1,22 @@
-import React from "react";
+import Layout from "../components/Layout";
 
-function TransactionPage() {
+export default function TransactionPage() {
+
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Transaction Page</h1>
-      <p>Send or receive welfare funds</p>
-    </div>
+
+    <Layout>
+
+      <h1>Send Money</h1>
+
+      <input placeholder="Receiver ID" />
+      <br /><br />
+
+      <input placeholder="Amount" />
+      <br /><br />
+
+      <button>Send</button>
+
+    </Layout>
+
   );
 }
-
-export default TransactionPage;
