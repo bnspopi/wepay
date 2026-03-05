@@ -1,16 +1,23 @@
 const welfareService = {
-  sendMoney: (amount: number) => {
-    console.log("Transaction processed:", amount);
-    return { status: "success", amount };
+  getSchemes: async () => {
+    return [
+      {
+        id: 1,
+        name: "Food Security Scheme",
+        description: "Provides subsidized food grains to eligible citizens"
+      },
+      {
+        id: 2,
+        name: "Health Support Scheme",
+        description: "Free healthcare for low-income families"
+      }
+    ];
   },
 
-  getBalance: () => {
-    return 10000;
-  },
-
-  getTransactionHistory: () => {
-    return [];
+  checkEligibility: async (user: any) => {
+    console.log("Checking eligibility for:", user);
+    return { eligible: true };
   }
 };
 
-export default welfareService;
+export { welfareService };
