@@ -1,18 +1,18 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
 
   const navigate = useNavigate();
 
-  const [email,setEmail] = useState("");
+  const [username,setUsername] = useState("");
   const [password,setPassword] = useState("");
 
   const handleLogin = () => {
 
-    if(email === "demo@wepay.com" && password === "demo123"){
+    if(username === "demo" && password === "demo"){
 
-      alert("Login Successful");
+      alert("Login successful");
 
       navigate("/home");
 
@@ -25,6 +25,47 @@ export default function LoginPage() {
   };
 
   return (
+
+    <div style={{ padding: "40px" }}>
+
+      <h1>Login Page</h1>
+
+      <p>User login portal</p>
+
+      <div style={{ marginTop: "20px" }}>
+
+        <input
+          placeholder="Username"
+          value={username}
+          onChange={(e)=>setUsername(e.target.value)}
+          style={{ display:"block", marginBottom:"10px", padding:"8px" }}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e)=>setPassword(e.target.value)}
+          style={{ display:"block", marginBottom:"10px", padding:"8px" }}
+        />
+
+        <button onClick={handleLogin}>
+          Login
+        </button>
+
+      </div>
+
+      <p style={{ marginTop:"20px" }}>
+        Demo user: demo  
+        <br/>
+        Demo password: demo
+      </p>
+
+    </div>
+
+  );
+
+}
 
     <div>
 
