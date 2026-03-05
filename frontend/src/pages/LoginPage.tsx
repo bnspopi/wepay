@@ -1,58 +1,58 @@
-import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function LoginPage() {
 
-  const handleLogin = (e: any) => {
-    e.preventDefault();
-    alert("Login Successful!");
+  const navigate = useNavigate();
+
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+
+  const handleLogin = () => {
+
+    if(email === "demo@wepay.com" && password === "demo123"){
+
+      alert("Login Successful");
+
+      navigate("/home");
+
+    } else {
+
+      alert("Invalid credentials");
+
+    }
+
   };
 
   return (
-    <div style={{ padding: "40px", fontFamily: "Arial" }}>
-      <h1>Login to WePay</h1>
 
-      <form onSubmit={handleLogin}>
-        <div>
-          <input
-            type="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={{ padding: "10px", width: "250px" }}
-          />
-        </div>
+    <div>
 
-        <br />
+      <h1>Login</h1>
 
-        <div>
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ padding: "10px", width: "250px" }}
-          />
-        </div>
+      <p>Demo User: demo@wepay.com</p>
+      <p>Password: demo123</p>
 
-        <br />
+      <input
+        placeholder="Email"
+        value={email}
+        onChange={(e)=>setEmail(e.target.value)}
+      />
 
-        <button
-          type="submit"
-          style={{
-            padding: "10px 20px",
-            background: "#007bff",
-            color: "white",
-            border: "none",
-            cursor: "pointer"
-          }}
-        >
-          Login
-        </button>
-      </form>
+      <br/>
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e)=>setPassword(e.target.value)}
+      />
+
+      <br/>
+
+      <button onClick={handleLogin}>Login</button>
+
     </div>
+
   );
 }
-
-export default LoginPage;
