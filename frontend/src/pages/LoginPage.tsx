@@ -6,31 +6,50 @@ function LoginPage() {
 
   const handleLogin = (e: any) => {
     e.preventDefault();
-    alert("Login Successful");
+    alert("Login Successful!");
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Login Page</h1>
+    <div style={{ padding: "40px", fontFamily: "Arial" }}>
+      <h1>Login to WePay</h1>
 
       <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br /><br />
+        <div>
+          <input
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            style={{ padding: "10px", width: "250px" }}
+          />
+        </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br /><br />
+        <br />
 
-        <button type="submit">Login</button>
+        <div>
+          <input
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={{ padding: "10px", width: "250px" }}
+          />
+        </div>
+
+        <br />
+
+        <button
+          type="submit"
+          style={{
+            padding: "10px 20px",
+            background: "#007bff",
+            color: "white",
+            border: "none",
+            cursor: "pointer"
+          }}
+        >
+          Login
+        </button>
       </form>
     </div>
   );
