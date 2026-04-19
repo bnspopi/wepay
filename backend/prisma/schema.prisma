@@ -1,0 +1,98 @@
+// Prisma schema for production use with PostgreSQL
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                      String         @id @default(uuid())
+  email                   String         @unique
+  name                    String?
+  did                     String?
+  location                String?
+  state                   String?
+  district                String?
+  village                 String?
+  language                String?        @default("hi")
+  onboarded               Boolean?       @default(false)
+  role                    String?        @default("user")
+  balance                 Float?         @default(5000)
+  savingsLockedUntil      DateTime?
+  averageTransactionAmount Float?        @default(0)
+  lastLoginState          String?
+  riskScore               Float?         @default(0)
+  createdAt               DateTime       @default(now())
+  updatedAt               DateTime?      @updatedAt
+  isDeleted               Boolean        @default(false)
+  transactionsSent        Transaction[]  @relation("SentTransactions")
+  transactionsReceived    Transaction[]  @relation("ReceivedTransactions")
+  welfarePayments         WelfarePayment[]
+
+  @@index([email])
+}
+
+model Transaction {
+  id          String   @id @default(uuid())
+  senderId    String?
+  sender      User?    @relation("SentTransactions", fields: [senderId], references: [id])
+  receiverId  String?
+  receiver    User?    @relation("ReceivedTransactions", fields: [receiverId], references: [id])
+  amount      Float
+  status      String   @default("completed")
+  type        String   @default("p2p")
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  isDeleted   Boolean  @default(false)
+
+  @@index([senderId])
+  @@index([receiverId])
+}
+
+model WelfarePayment {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  schemeName String
+  amount     Float
+  status     String   @default("paid")
+  paidAt     DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  isDeleted  Boolean  @default(false)
+
+  @@index([userId])
+}
+
+model WelfareScheme {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  category    String
+  benefits    String[]
+  eligibility String[]
+  icon        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  isDeleted   Boolean  @default(false)
+}
+
+model Otp {
+  id         String   @id @default(uuid())
+  identifier String
+  type       String
+  otp        String
+  expiresAt  DateTime
+  attempts   Int      @default(0)
+  verified   Boolean  @default(false)
+  purpose    String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  isDeleted  Boolean  @default(false)
+
+  @@index([identifier, type])
+}
